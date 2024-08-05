@@ -1,0 +1,26 @@
+# Use the official Playwright image, which has Node.js, browsers, and dependencies pre-installed
+FROM mcr.microsoft.com/playwright:v1.39.0-jammy
+
+# Install Git
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Clone your GitHub repository (replace with your repository URL)
+RUN git clone https://github.com/Mageshpoopathi/PlaywrightTypescript.git
+
+# Change to the repository directory
+WORKDIR /app/PlaywrightTypescript
+
+# Install project dependencies
+COPY package.json .
+COPY package-lock.json .
+RUN npm install
+RUN npx playwright install
+
+# Copy all project files
+COPY . .
+
+# Run Playwright tests using Cucumber.js
+CMD ["npx", "cucumber-js"]
