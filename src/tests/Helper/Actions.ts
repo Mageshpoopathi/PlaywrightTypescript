@@ -46,29 +46,37 @@ export async function assertURL(URL:string){
 export async function waitSelector(Webelement:string){
     await pageObject.page.waitForSelector(Webelement);
 }
+
 export async function dropDownValidate(Webelement:string,options:string){
     await pageObject.page.selectOption(Webelement,options);
 }
+
 export async function takeScreenshot(name:string){
     await pageObject.page.screenshot({path:"test-results/Screenshots/"+Date.now()+name+".png"});
 }
+
 export async function statusCode(response:any,code:number) {
    if(response.status()==code){
     console.log(`Response status code is ${code}`);
    }
 }
+
 export async function responseData(response:any){
      console.log(await response.text());
 }
+
 export async function responseJSON(response:any){
      console.log(await response.json());
 }
+
 export async function responseURL(response:any){
     console.log(await response.url());
 }
+
 export async function responseRequest(response:any){
     console.log(await response.request());
 }
+
 export async function responseHeaders(response:any){
     console.log(await response.headers());
 }
@@ -76,14 +84,17 @@ export async function responseHeaders(response:any){
 export async function assertText(Webelement:string,text:string){
     await expect(pageObject.page.locator(Webelement)).toHaveText(text);
 }
+
 export async function cookieVerification(){
     const cookies=await pageObject.page.context().cookies();
     console.log(`Cookies present in the page are :`+JSON.stringify(cookies, null, 2))
   }
-  export async function setCookies(dataForCookie:any){
+
+export async function setCookies(dataForCookie:any){
     await pageObject.page.context().addCookies(dataForCookie)
   }
-  export async function mouseHoverClick(Webelement:string){
+
+export async function mouseHoverClick(Webelement:string){
     const locator=pageObject.page.locator(Webelement);
     await locator.hover();
     await locator.click();
