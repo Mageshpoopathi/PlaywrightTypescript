@@ -3,7 +3,6 @@ import { cyclosloginPage } from "../../Pages/CyclosWebsite/cyclosLoginPage/cyclo
 import { pageObject } from "../../Hooks/PageObjects";
 let Cyclosloginpage:cyclosloginPage;
 
-  
   Given('User navigate to login page', async function () {
     Cyclosloginpage=new cyclosloginPage(pageObject.page);
     await Cyclosloginpage.navigate();
@@ -14,7 +13,6 @@ let Cyclosloginpage:cyclosloginPage;
     await Cyclosloginpage.enterPassword(password);
   });
   
-
   Given('Click the submit', async function () {
     await Cyclosloginpage.ClicklaunchButton();
   });
@@ -22,9 +20,6 @@ let Cyclosloginpage:cyclosloginPage;
   Given('Click the user payment option', async function () {
     await Cyclosloginpage.ClickPayUserButton();
   });
-
-  
-  
 
   Given('I perform the user payment', async function () {
 
