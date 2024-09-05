@@ -1,6 +1,7 @@
 import {  expect, Page,Dialog } from "@playwright/test";
 import {  clickAndSendkeys, launchURL, toClick , assertURL, assertText, takeScreenshot, select, sleep } from "../../Helper/Actions";
 import { pageObject } from "../../Hooks/PageObjects";
+
 type DialogHandler = (dialog: Dialog) => Promise<void>;
 
 const PageLocators = {
@@ -16,7 +17,6 @@ const PageLocators = {
     addDetails:"//button[text()='Add Customer']",
     home:"//button[text()='Home']"
 }
-
 export class ManagerLogin{
     private page:Page;
     constructor(page:Page){
