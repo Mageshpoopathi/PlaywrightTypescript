@@ -1,5 +1,5 @@
 import { pageObject } from "../Hooks/PageObjects";
-import { expect } from "@playwright/test";
+import { expect, selectors } from "@playwright/test";
 import { execFile } from "child_process";
 export async function launchURL(URL:string){
     await pageObject.page.goto(URL);
@@ -21,6 +21,14 @@ export async function Fill(Webelement:string,text:string){
 export async function Click(Webelement:string){
     await pageObject.page.click(Webelement);
 }
+
+export async function select(Webelement:string,text:string){
+    await pageObject.page.click(Webelement);
+    const option=await pageObject.page.$(Webelement);
+  await option?.selectOption(text)
+    await pageObject.page.selectOption(Webelement,text);
+}
+
 export async function doubleClick(Webelement:string){
     await pageObject.page.dblclick(Webelement);
 }

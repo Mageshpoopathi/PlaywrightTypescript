@@ -19,3 +19,6 @@ When('click on Add customer option', async function () {
     await details.fillDetails();
   });
 
+  When('Open the customer Details', async function () {
+  await  details.openCustomer();
+  });
